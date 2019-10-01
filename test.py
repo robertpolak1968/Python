@@ -20,3 +20,7 @@ print('same line')
 print(type(age))
 print(type(name))
 
+age = input ("What is your agr?")
+age = int(age)
+print (age)
+print(type(age))
