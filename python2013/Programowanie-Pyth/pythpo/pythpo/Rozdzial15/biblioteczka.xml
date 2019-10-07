@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<library owner="Jan Kowalski" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNameSpaceSchemaLocation="biblioteczka.xsd">
+  <book>
+    <title>Sen sprawiedliwych</title>
+    <author>Neil Gaiman</author>
+  </book>
+  <book>
+    <title>Dobry omen</title>
+    <author>Neil Gamain</author>
+    <author>Terry Pratchett</author>
+  </book>
+  <book>
+    <title>Python. Od podstaw</title>
+    <author>Peter Norton i inni</author>
+  </book>
+  <book>
+    <title>Python. Od podstaw</title>
+    <author>Peter Norton i inni</author>
+  </book>
+  <book>
+    <title>Python. Od podstaw</title>
+    <author>Peter Norton i inni</author>
+  </book>
+</library>

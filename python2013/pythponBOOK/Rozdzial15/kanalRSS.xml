@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rss PUBLIC "-//Netscape Communications//DTD RSS 0.91//EN" "http://my.netscape.com/publish/formats/rss-0.91.dtd">
+<rss version="0.91"><channel><title>Mój wspaniały blog</title><link>http://serwer.domena.tld</link><description>To jest mój blog. Istnieje wiele innych, ale ten jest moją własnością.</description><item>
+
+<title>Naprawdę Duża Korporacja kopuje Nieco Mniejszą Korporację</title>
+
+<description>
+Naprawdę Duża Korporacja ogłosiła dziś zamiar zakupu Nieco Mniejsza Korporacja. Nieco Mniejsza Korporacja jest światowym liderem w produkcji widgetów. Transakcja na pewno wpłynie na światowe dostawy widgetów.
+</description>
+<link>
+http://serwer.domena.tld/mojblog.html#autogen4</link></item><item>
+
+<title>Programowanie w Pythonie prostsze niż kiedykolwiek</title>
+
+<description>
+Programowanie w Pythonie stało się prostsze niż kiedykolwiek dzięki wydanej właśnie przez Wydawnictwo Helion książce Python. Od podstaw.
+</description>
+<link>
+http://serwer.domena.tld/mojblog.html#autogen3</link></item><item>
+
+<title>Naprawdę Sławny Autor podpisuje książki w maleńkiej księgarni</title>
+
+<description>
+Autor wielu bestsellerowych tutułów będzie podpisywał swoje książki w niewielkiej księgarni w moim mieście.  To wydarzenie, którego nie warto opuścić.
+</description>
+<link>
+http://serwer.domena.tld/mojblog.html#autogen2</link></item><item>
+
+<title>Blogi bardziej popularne niż kiedykolwiek</title>
+
+<description>
+Aktualnie istnieje więcej blogów niż kiedykolwiek wcześniej, co wprowadza jeszcze większe zainteresowanie tą formą dzienników. Trudno powiedzieć, czy to dobrze, czy źle, ale na pewno jest to wydajna forma komunikacji.
+</description>
+<link>
+http://serwer.domena.tld/mojblog.html#autogen1</link></item></channel></rss>

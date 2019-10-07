@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<definitions name="BittyWiki"
+             targetNamespace="urn:BittyWiki"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	     xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<!--Opisy funkcji udostępnianych przez BittyWiki API. Definicje referencji
+komunikatów dla funkcji zostały podane w dalszej części dokumentu.
+-->
+<portType name="BittyWikiPortType">
+  <operation name="getPage">
+      <input message="sendPageName"/>
+      <output message="getPageText"/>
+  </operation>
+
+  <operation name="save">
+      <input message="sendPageNameAndText"/>
+      <output message="getStatusMessage"/>
+  </operation>
+
+  <operation name="delete">
+      <input message="sendPageName"/>
+      <output message="getStatusMessage"/>
+  </operation>
+</portType>
+
+<!--Opisy sygnatur metod używanych przez BittyWiki API.
+Informujemy, że na przykład pierwsza z metod oczekuje nazwy strony.
+Ta sygnatura jest odpowieednia dla getPage() i delete().-->
+<message name="sendPageName">
+   <part name="pageName" type="xsd:string"/>
+</message>
+
+<message name="sendPageNameAndText">
+   <part name="pageName" type="xsd:string"/>
+   <part name="pageText" type="xsd:string"/>
+</message>
+
+<!--Opisy możliwych wartości zwracanych przez metody interfejsu
+BittyWiki API. Pierwsza dotyczy zwracanej wartości zawierającej
+treść strony wiki, więc dotyczy funkcji getPage().-->
+<message name="getPageText">
+   <part name="pageText" type="xsd:string"/>
+</message>
+
+<message name="getStatusMessage">
+   <part name="message" type="xsd:string"/>
+</message>
+
+<!--Dowiązania odpowiednich funkcji BittyWiki API (wcześniej zostały zdefiniowane
+w sposób bardziej abstrakcyjny) do konkretnych elementów portokołu "SOAP-over-HTTP".-->
+<binding type="BittyWikiPortType" name="BittyWikiSOAPBinding">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+  <operation name="getPage">
+   <input><soap:body use="literal" namespace="urn:BittyWiki" /></input>
+   <output><soap:body use="literal" namespace="urn:BittyWiki" /></output>
+  </operation>
+
+  <operation name="save">
+   <input><soap:body use="literal" namespace="urn:BittyWiki" /></input>
+   <output><soap:body use="literal" namespace="urn:BittyWiki" /></output>
+  </operation>
+
+  <operation name="delete">
+   <input><soap:body use="literal" namespace="urn:BittyWiki" /></input>
+   <output><soap:body use="literal" namespace="urn:BittyWiki" /></output>
+  </operation>
+</binding>
+
+<!--Łącze do usługi internetowej BittyWiki. używa interfejsu BittyWiki API
+zdefiniowanego w BittyWikiPortType i realizowanego przez dowiązanie
+SOAP-over-HTTP o nazwie BittyWikiSOAPBinding.-->
+<service name="BittyWiki">
+ <port name="BittyWikiPort" binding="BittyWikiSOAPBinding">
+  <soap:address location="http://localhost:8002/"/>
+ </port>
+</service>
+</definitions>

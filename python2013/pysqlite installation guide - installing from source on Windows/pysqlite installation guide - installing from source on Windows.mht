@@ -1,0 +1,859 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: pysqlite installation guide - installing from source on Windows
+Date: Thu, 28 Aug 2008 22:37:55 +0100
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0007_01C9095E.B694F140"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5512
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0007_01C9095E.B694F140
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://oss.itsystementwicklung.de/download/pysqlite/doc/install-source-win32.html
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML lang=3Den xml:lang=3D"en" =
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>pysqlite =
+installation guide - installing from source on Windows</TITLE>
+<META content=3D"text/html; charset=3Dutf-8" http-equiv=3DContent-Type>
+<META name=3DGENERATOR content=3D"MSHTML 6.00.6001.17184">
+<STYLE type=3Dtext/css>@import url( docutils.css );
+@import url( silvercity.css );
+DIV.code-block {
+	FONT-SIZE: 10pt; MARGIN-LEFT: 2em; MARGIN-RIGHT: 2em; FONT-FAMILY: =
+"Courier New",Courier,monospace; BACKGROUND-COLOR: #eeeeee
+}
+</STYLE>
+</HEAD>
+<BODY>
+<DIV id=3Dpysqlite-installation-guide-installing-from-source-on-windows=20
+class=3Ddocument>
+<H1 class=3Dtitle>pysqlite installation guide - installing from source =
+on=20
+Windows</H1>
+<P>(c) 2005 Gerhard H=C3=A4ring</P>
+<P>Steps:</P>
+<BLOCKQUOTE>
+  <UL class=3Dsimple>
+    <LI><A class=3Dreference=20
+    =
+href=3D"http://oss.itsystementwicklung.de/download/pysqlite/doc/install-s=
+ource-win32.html#step-1-download-and-install-required-tools">Step=20
+    1: Download and install required tools</A>=20
+    <LI><A class=3Dreference=20
+    =
+href=3D"http://oss.itsystementwicklung.de/download/pysqlite/doc/install-s=
+ource-win32.html#step-2-download-and-compile-sqlite">Step=20
+    2: Download and compile SQLite</A>=20
+    <LI><A class=3Dreference=20
+    =
+href=3D"http://oss.itsystementwicklung.de/download/pysqlite/doc/install-s=
+ource-win32.html#step-3-compile-pysqlite">Step=20
+    3: Compile pysqlite</A>=20
+    <LI><A class=3Dreference=20
+    =
+href=3D"http://oss.itsystementwicklung.de/download/pysqlite/doc/install-s=
+ource-win32.html#step-4-install-pysqlite-or-create-an-installer">Step=20
+    4: Install pysqlite or create an installer</A>=20
+    <LI><A class=3Dreference=20
+    =
+href=3D"http://oss.itsystementwicklung.de/download/pysqlite/doc/install-s=
+ource-win32.html#step-5-test-your-pysqlite-installation">Step=20
+    5: Test your pysqlite installation</A> </LI></UL></BLOCKQUOTE>
+<DIV class=3Dsection>
+<H1><A id=3Dstep-1-download-and-install-required-tools=20
+name=3Dstep-1-download-and-install-required-tools>Step 1: Download and =
+install=20
+required tools</A></H1>
+<P>This guide explains how to build SQLite and pysqlite with free and =
+commercial=20
+Microsoft compilers for Python 2.4 and later. Other compilers might =
+work, too,=20
+and MINGW is known to work well for Python 2.3, but in order to keep =
+this=20
+document to the point, only one obvious way to do it is documented.</P>
+<P>First we need to have a working compiler. These two work fine:</P>
+<BLOCKQUOTE>
+  <UL class=3Dsimple>
+    <LI>Microsoft Visual Studio .NET 2003=20
+    <LI>MS Toolkit Compiler (<A class=3Dreference=20
+    =
+href=3D"http://www.vrplumber.com/programming/mstoolkit/">http://www.vrplu=
+mber.com/programming/mstoolkit/</A>)=20
+    </LI></UL></BLOCKQUOTE>
+<P>Then, we need GNU make. Download a Windows version from <A =
+class=3Dreference=20
+href=3D"http://mingw.sourceforge.net/download.shtml">http://mingw.sourcef=
+orge.net/download.shtml</A>=20
+and extract it.</P>
+<P>Make sure your PATH is set up correctly, so that the make.exe you =
+just=20
+downloaded is in the PATH and that your compiler's environment is set up =
+
+correctly. For MS Visual Studio .NET 2003, just execute =
+Start/Programs/Microsoft=20
+Visual Studio .NET/Visual Studio .NET Tools/Visual Studio .NET 2003 =
+Command=20
+Prompt. For the MS Toolkit Compiler write yourself a batch file that =
+sets up the=20
+environment as neccessary.</P></DIV>
+<DIV class=3Dsection>
+<H1><A id=3Dstep-2-download-and-compile-sqlite=20
+name=3Dstep-2-download-and-compile-sqlite>Step 2: Download and compile=20
+SQLite</A></H1>
+<P>From now on, let's suppose you do all your development work in =
+$SRCDIR.</P>
+<P>Now download the latest versions of the SQLite 3.x Windows sources =
+from <A=20
+class=3Dreference=20
+href=3D"http://sqlite.org/download.html">http://sqlite.org/download.html<=
+/A>.</P>
+<P>Pick the download that looks like this:</P>
+<P>sqlite-source-3_{major}_{minor}.zip</P>
+<P>Extract this file in $SRCDIR/sqlite</P>
+<P>Now copy this file into your $SRCDIR/sqlite directory: <A =
+class=3Dreference=20
+href=3D"http://initd.org/svn/pysqlite/pysqlite/trunk/misc/Makefile">http:=
+//initd.org/svn/pysqlite/pysqlite/trunk/misc/Makefile</A></P>
+<P>Then on a Windows command prompt, change into the $SRCDIR/sqlite =
+directory=20
+and issue a "make". This should build a statically linked SQLite library =
+
+now:</P><PRE class=3Dliteral-block>Setting environment for using =
+Microsoft Visual Studio .NET 2003 tools.
+(If you have another version of Visual Studio or Visual C++ installed =
+and wish
+to use its tools from the command line, run vcvars32.bat for that =
+version.)
+
+C:\Documents and Settings\Gerhard&gt;set path=3Dc:\msys\1.0\bin;%PATH%
+
+C:\Documents and Settings\Gerhard&gt;d:
+
+D:\&gt;cd src\sqlite
+
+D:\src\sqlite&gt;make
+cl -c -O2 -Og -G7 -Foalter.o alter.c
+Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 13.10.3077 for =
+80x86
+Copyright (C) Microsoft Corporation 1984-2002. All rights reserved.
+
+alter.c
+cl -c -O2 -Og -G7 -Foanalyze.o analyze.c
+Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 13.10.3077 for =
+80x86
+Copyright (C) Microsoft Corporation 1984-2002. All rights reserved.
+
+[...]
+
+utf.c
+cl -c -O2 -Og -G7 -Folegacy.o legacy.c
+Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 13.10.3077 for =
+80x86
+Copyright (C) Microsoft Corporation 1984-2002. All rights reserved.
+
+legacy.c
+link -LIB -OUT:sqlite3.lib alter.o analyze.o attach.o auth.o btree.o =
+build.o cal
+lback.o complete.o date.o delete.o expr.o func.o hash.o insert.o main.o =
+opcodes.
+o os_unix.o os_win.o pager.o parse.o pragma.o prepare.o printf.o =
+random.o select
+.o table.o tokenize.o trigger.o update.o util.o vacuum.o vdbe.o =
+vdbeapi.o vdbeau
+x.o vdbefifo.o vdbemem.o where.o utf.o legacy.o
+Microsoft (R) Library Manager Version 7.10.3077
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+done
+
+D:\src\sqlite&gt;
+</PRE></DIV>
+<DIV class=3Dsection>
+<H1><A id=3Dstep-3-compile-pysqlite name=3Dstep-3-compile-pysqlite>Step =
+3: Compile=20
+pysqlite</A></H1>
+<P>Unpack the latest pysqlite sources in $SRCDIR/pysqlite</P>
+<P>Now change the include_dirs and library_dirs settings in <TT=20
+class=3D"docutils literal"><SPAN class=3Dpre>setup.cfg</SPAN></TT> like =
+this:</P><PRE class=3Dliteral-block>[build_ext]
+define=3D
+include_dirs=3D../sqlite
+library_dirs=3D../sqlite
+libraries=3Dsqlite3
+</PRE>
+<P>Now open a command prompt, change to the directory where you =
+decompressed the=20
+pysqlite source distribution, and type:</P><PRE =
+class=3Dliteral-block>python setup.py build
+</PRE>
+<P>If setup.py raises no errors and its output concludes with something =
+like=20
+"Creating library...", then you are ready to proceed to the next =
+step.</P>
+<P>If you receive an error message from the compiler, then try to look =
+at the=20
+first error it reports. Other errors will most likely be aftereffects =
+from the=20
+first error (like not finding the sqlite3.h header file).</P></DIV>
+<DIV class=3Dsection>
+<H1><A id=3Dstep-4-install-pysqlite-or-create-an-installer=20
+name=3Dstep-4-install-pysqlite-or-create-an-installer>Step 4: Install =
+pysqlite or=20
+create an installer</A></H1>
+<P>To install pysqlite now, invoke:</P><PRE class=3Dliteral-block>python =
+setup.py install
+</PRE>
+<P>from the commandline. In order to create an installer executable, =
+invoke:</P><PRE class=3Dliteral-block>python setup.py bdist_wininst
+</PRE>
+<P>from the commandline.</P></DIV>
+<DIV class=3Dsection>
+<H1><A id=3Dstep-5-test-your-pysqlite-installation=20
+name=3Dstep-5-test-your-pysqlite-installation>Step 5: Test Your pysqlite =
+
+Installation</A></H1>
+<P>Switch to a directory other than the temporary directory into which =
+you=20
+decompressed the source distribution (to avoid conflict between the copy =
+of=20
+pysqlite in that directory and the copy placed under the standard Python =
+
+site-packages directory), then run the pysqlite test suite by starting a =
+Python=20
+interpreter for the Python version you installed pysqlite for and =
+entering the=20
+following:</P><PRE class=3Dliteral-block>&gt;&gt;&gt; from pysqlite2 =
+import test
+&gt;&gt;&gt; test.test()
+......................................................................
+......................................................................
+...........
+----------------------------------------------------------------------
+Ran 151 tests in 1.059s
+
+OK
+&gt;&gt;&gt;
+</PRE>
+<P>If the test suite runs without any errors, you are finished.</P>
+<P>You should not encounter any errors at this stage since you have =
+already=20
+completed the compilation and installation steps successfully. If you =
+do, please=20
+report them to the <A class=3Dreference=20
+href=3D"http://initd.org/tracker/pysqlite">pysqlite bug tracker</A> or =
+the <A=20
+class=3Dreference =
+href=3D"http://lists.initd.org/mailman/listinfo/pysqlite">pysqlite=20
+mailing list</A>.</P></DIV></DIV></BODY></HTML>
+
+------=_NextPart_000_0007_01C9095E.B694F140
+Content-Type: text/css;
+	charset="iso-8859-2"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://oss.itsystementwicklung.de/download/pysqlite/doc/docutils.css
+
+.first {
+	MARGIN-TOP: 0px! important
+}
+.last {
+	MARGIN-BOTTOM: 0px! important
+}
+.hidden {
+	DISPLAY: none
+}
+A.toc-backref {
+	COLOR: black; TEXT-DECORATION: none
+}
+BLOCKQUOTE.epigraph {
+	MARGIN: 2em 5em
+}
+DL.docutils DD {
+	MARGIN-BOTTOM: 0.5em
+}
+DIV.abstract {
+	MARGIN: 2em 5em
+}
+DIV.abstract P.topic-title {
+	FONT-WEIGHT: bold; TEXT-ALIGN: center
+}
+DIV.admonition {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.attention {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.caution {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.danger {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.error {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.hint {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.important {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.note {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.tip {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.warning {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; MARGIN: 2em; BORDER-LEFT: =
+outset; PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.admonition P.admonition-title {
+	FONT-WEIGHT: bold; FONT-FAMILY: sans-serif
+}
+DIV.hint P.admonition-title {
+	FONT-WEIGHT: bold; FONT-FAMILY: sans-serif
+}
+DIV.important P.admonition-title {
+	FONT-WEIGHT: bold; FONT-FAMILY: sans-serif
+}
+DIV.note P.admonition-title {
+	FONT-WEIGHT: bold; FONT-FAMILY: sans-serif
+}
+DIV.tip P.admonition-title {
+	FONT-WEIGHT: bold; FONT-FAMILY: sans-serif
+}
+DIV.attention P.admonition-title {
+	FONT-WEIGHT: bold; COLOR: red; FONT-FAMILY: sans-serif
+}
+DIV.caution P.admonition-title {
+	FONT-WEIGHT: bold; COLOR: red; FONT-FAMILY: sans-serif
+}
+DIV.danger P.admonition-title {
+	FONT-WEIGHT: bold; COLOR: red; FONT-FAMILY: sans-serif
+}
+DIV.error P.admonition-title {
+	FONT-WEIGHT: bold; COLOR: red; FONT-FAMILY: sans-serif
+}
+DIV.warning P.admonition-title {
+	FONT-WEIGHT: bold; COLOR: red; FONT-FAMILY: sans-serif
+}
+DIV.dedication {
+	MARGIN: 2em 5em; FONT-STYLE: italic; TEXT-ALIGN: center
+}
+DIV.dedication P.topic-title {
+	FONT-WEIGHT: bold; FONT-STYLE: normal
+}
+DIV.figure {
+	MARGIN-LEFT: 2em
+}
+DIV.footer {
+	FONT-SIZE: smaller
+}
+DIV.header {
+	FONT-SIZE: smaller
+}
+DIV.line-block {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em; DISPLAY: block
+}
+DIV.line-block DIV.line-block {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 1.5em
+}
+DIV.sidebar {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; FLOAT: right; PADDING-BOTTOM: 1em; MARGIN-LEFT: 1em; =
+BORDER-LEFT: outset; WIDTH: 40%; CLEAR: right; PADDING-TOP: 1em; =
+BORDER-BOTTOM: outset; BACKGROUND-COLOR: #ffffee
+}
+DIV.sidebar P.rubric {
+	FONT-SIZE: medium; FONT-FAMILY: sans-serif
+}
+DIV.system-messages {
+	MARGIN: 5em
+}
+DIV.system-messages H1 {
+	COLOR: red
+}
+DIV.system-message {
+	BORDER-RIGHT: outset; PADDING-RIGHT: 1em; PADDING-LEFT: 1em; =
+BORDER-TOP: outset; PADDING-BOTTOM: 1em; BORDER-LEFT: outset; =
+PADDING-TOP: 1em; BORDER-BOTTOM: outset
+}
+DIV.system-message P.system-message-title {
+	FONT-WEIGHT: bold; COLOR: red
+}
+DIV.topic {
+	MARGIN: 2em
+}
+H1.title {
+	TEXT-ALIGN: center
+}
+H2.subtitle {
+	TEXT-ALIGN: center
+}
+HR.docutils {
+	WIDTH: 75%
+}
+OL.simple {
+	MARGIN-BOTTOM: 1em
+}
+UL.simple {
+	MARGIN-BOTTOM: 1em
+}
+OL.arabic {
+	LIST-STYLE-TYPE: decimal
+}
+OL.loweralpha {
+	LIST-STYLE-TYPE: lower-alpha
+}
+OL.upperalpha {
+	LIST-STYLE-TYPE: upper-alpha
+}
+OL.lowerroman {
+	LIST-STYLE-TYPE: lower-roman
+}
+OL.upperroman {
+	LIST-STYLE-TYPE: upper-roman
+}
+P.attribution {
+	MARGIN-LEFT: 50%; TEXT-ALIGN: right
+}
+P.caption {
+	FONT-STYLE: italic
+}
+P.credits {
+	FONT-SIZE: smaller; FONT-STYLE: italic
+}
+P.label {
+	WHITE-SPACE: nowrap
+}
+P.rubric {
+	FONT-WEIGHT: bold; FONT-SIZE: larger; COLOR: maroon; TEXT-ALIGN: center
+}
+P.sidebar-title {
+	FONT-WEIGHT: bold; FONT-SIZE: larger; FONT-FAMILY: sans-serif
+}
+P.sidebar-subtitle {
+	FONT-WEIGHT: bold; FONT-FAMILY: sans-serif
+}
+P.topic-title {
+	FONT-WEIGHT: bold
+}
+PRE.address {
+	MARGIN-TOP: 0px; FONT-SIZE: 100%; MARGIN-BOTTOM: 0px; FONT-FAMILY: =
+serif
+}
+PRE.line-block {
+	FONT-SIZE: 100%; FONT-FAMILY: serif
+}
+PRE.literal-block {
+	MARGIN-LEFT: 2em; MARGIN-RIGHT: 2em; BACKGROUND-COLOR: #eeeeee
+}
+PRE.doctest-block {
+	MARGIN-LEFT: 2em; MARGIN-RIGHT: 2em; BACKGROUND-COLOR: #eeeeee
+}
+SPAN.classifier {
+	FONT-STYLE: oblique; FONT-FAMILY: sans-serif
+}
+SPAN.classifier-delimiter {
+	FONT-WEIGHT: bold; FONT-FAMILY: sans-serif
+}
+SPAN.interpreted {
+	FONT-FAMILY: sans-serif
+}
+SPAN.option {
+	WHITE-SPACE: nowrap
+}
+SPAN.pre {
+	WHITE-SPACE: pre
+}
+SPAN.problematic {
+	COLOR: red
+}
+TABLE.citation {
+	BORDER-LEFT: gray thin solid
+}
+TABLE.docinfo {
+	MARGIN: 2em 4em
+}
+TABLE.docutils {
+	MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em
+}
+TABLE.footnote {
+	BORDER-LEFT: black thin solid
+}
+TABLE.docutils TD {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; VERTICAL-ALIGN: top
+}
+TABLE.docutils TH {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; VERTICAL-ALIGN: top
+}
+TABLE.docinfo TD {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; VERTICAL-ALIGN: top
+}
+TABLE.docinfo TH {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; VERTICAL-ALIGN: top
+}
+TABLE.docutils TH.field-name {
+	PADDING-LEFT: 0px; FONT-WEIGHT: bold; WHITE-SPACE: nowrap; TEXT-ALIGN: =
+left
+}
+TABLE.docinfo TH.docinfo-name {
+	PADDING-LEFT: 0px; FONT-WEIGHT: bold; WHITE-SPACE: nowrap; TEXT-ALIGN: =
+left
+}
+H1 TT.docutils {
+	FONT-SIZE: 100%
+}
+H2 TT.docutils {
+	FONT-SIZE: 100%
+}
+H3 TT.docutils {
+	FONT-SIZE: 100%
+}
+H4 TT.docutils {
+	FONT-SIZE: 100%
+}
+H5 TT.docutils {
+	FONT-SIZE: 100%
+}
+H6 TT.docutils {
+	FONT-SIZE: 100%
+}
+TT.docutils {
+	BACKGROUND-COLOR: #eeeeee
+}
+UL.auto-toc {
+	LIST-STYLE-TYPE: none
+}
+BODY {
+	FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; BACKGROUND-COLOR: =
+#eeeeff
+}
+
+------=_NextPart_000_0007_01C9095E.B694F140
+Content-Type: text/css;
+	charset="iso-8859-2"
+Content-Transfer-Encoding: 7bit
+Content-Location: http://oss.itsystementwicklung.de/download/pysqlite/doc/silvercity.css
+
+.code_default {
+	FONT-SIZE: 10pt; FONT-FAMILY: "Courier New",Courier,monospace
+}
+.css_class {
+	COLOR: #900000
+}
+.css_comment {
+	COLOR: green; FONT-STYLE: italic
+}
+.css_directive {
+	FONT-WEIGHT: bold; COLOR: #009000
+}
+.css_doublestring {
+	COLOR: navy
+}
+.css_id {
+	COLOR: #900000
+}
+.css_identifier {
+	COLOR: black
+}
+.css_important {
+	COLOR: blue
+}
+.css_operator {
+	FONT-WEIGHT: bold; COLOR: #000090
+}
+.css_pseudoclass {
+	COLOR: #900000
+}
+.css_singlestring {
+	COLOR: navy
+}
+.css_tag {
+	FONT-WEIGHT: bold; COLOR: #900000
+}
+.css_unknown_identifier {
+	COLOR: red
+}
+.css_unknown_pseudoclass {
+	COLOR: #ff0000
+}
+.css_value {
+	COLOR: navy
+}
+.c_character {
+	COLOR: olive
+}
+.c_comment {
+	COLOR: green; FONT-STYLE: italic
+}
+.c_commentdoc {
+	COLOR: green; FONT-STYLE: italic
+}
+.c_commentdockeyword {
+	FONT-WEIGHT: bold; COLOR: navy
+}
+.c_commentdockeyworderror {
+	FONT-WEIGHT: bold; COLOR: red
+}
+.c_commentline {
+	COLOR: green; FONT-STYLE: italic
+}
+.c_commentlinedoc {
+	COLOR: green; FONT-STYLE: italic
+}
+.c_identifier {
+	COLOR: black
+}
+.c_number {
+	COLOR: #009999
+}
+.c_operator {
+	COLOR: black
+}
+.c_preprocessor {
+	FONT-WEIGHT: bold; COLOR: navy
+}
+.c_regex {
+	COLOR: olive
+}
+.c_string {
+	COLOR: olive
+}
+.c_stringeol {
+	COLOR: olive
+}
+.c_uuid {
+	COLOR: olive
+}
+.c_verbatim {
+	COLOR: olive
+}
+.c_word {
+	FONT-WEIGHT: bold; COLOR: navy
+}
+.c_word2 {
+	FONT-WEIGHT: bold; COLOR: navy
+}
+.h_asp {
+	COLOR: #ffff00
+}
+.h_aspat {
+	COLOR: #ffdf00
+}
+.h_attribute {
+	COLOR: #008080
+}
+.h_attributeunknown {
+	COLOR: #ff0000
+}
+.h_cdata {
+	COLOR: #ffdf00
+}
+.h_comment {
+	COLOR: #808000
+}
+.h_doublestring {
+	COLOR: olive
+}
+.h_entity {
+	COLOR: #800080
+}
+.h_number {
+	COLOR: #009999
+}
+.h_other {
+	COLOR: #800080
+}
+.h_script {
+	COLOR: #000080
+}
+.h_singlestring {
+	COLOR: olive
+}
+.h_tag {
+	COLOR: #000080
+}
+.h_tagend {
+	COLOR: #000080
+}
+.h_tagunknown {
+	COLOR: #ff0000
+}
+.h_xmlend {
+	COLOR: #0000ff
+}
+.h_xmlstart {
+	COLOR: #0000ff
+}
+.pl_array {
+	COLOR: black
+}
+.pl_backticks {
+	COLOR: olive
+}
+.pl_character {
+	COLOR: olive
+}
+.pl_commentline {
+	COLOR: green; FONT-STYLE: italic
+}
+.pl_datasection {
+	COLOR: olive
+}
+.pl_error {
+	COLOR: red
+}
+.pl_hash {
+	COLOR: black
+}
+.pl_here_delim {
+	COLOR: olive
+}
+.pl_here_q {
+	COLOR: olive
+}
+.pl_here_qq {
+	COLOR: olive
+}
+.pl_here_qx {
+	COLOR: olive
+}
+.pl_identifier {
+	COLOR: black
+}
+.pl_longquote {
+	COLOR: olive
+}
+.pl_number {
+	COLOR: #009999
+}
+.pl_operator {
+	COLOR: black
+}
+.pl_pod {
+	COLOR: black; FONT-STYLE: italic
+}
+.pl_preprocessor {
+	FONT-WEIGHT: bold; COLOR: navy
+}
+.pl_punctuation {
+	COLOR: black
+}
+.pl_regex {
+	COLOR: olive
+}
+.pl_regsubst {
+	COLOR: olive
+}
+.pl_scalar {
+	COLOR: black
+}
+.pl_string {
+	COLOR: olive
+}
+.pl_string_q {
+	COLOR: olive
+}
+.pl_string_qq {
+	COLOR: olive
+}
+.pl_string_qr {
+	COLOR: olive
+}
+.pl_string_qw {
+	COLOR: olive
+}
+.pl_string_qx {
+	COLOR: olive
+}
+.pl_symboltable {
+	COLOR: black
+}
+.pl_word {
+	FONT-WEIGHT: bold; COLOR: navy
+}
+.p_character {
+	COLOR: olive
+}
+.p_classname {
+	FONT-WEIGHT: bold; COLOR: blue
+}
+.p_commentblock {
+	COLOR: gray; FONT-STYLE: italic
+}
+.p_commentline {
+	COLOR: green; FONT-STYLE: italic
+}
+.p_defname {
+	FONT-WEIGHT: bold; COLOR: #009999
+}
+.p_identifier {
+	COLOR: black
+}
+.p_number {
+	COLOR: #009999
+}
+.p_operator {
+	COLOR: black
+}
+.p_string {
+	COLOR: olive
+}
+.p_stringeol {
+	COLOR: olive
+}
+.p_triple {
+	COLOR: olive
+}
+.p_tripledouble {
+	COLOR: olive
+}
+.p_word {
+	FONT-WEIGHT: bold; COLOR: navy
+}
+.yaml_comment {
+	COLOR: #008800; FONT-STYLE: italic
+}
+.yaml_document {
+	COLOR: #808080; FONT-STYLE: italic
+}
+.yaml_identifier {
+	FONT-WEIGHT: bold; COLOR: navy
+}
+.yaml_keyword {
+	COLOR: #880088
+}
+.yaml_number {
+	COLOR: #880000
+}
+.yaml_reference {
+	COLOR: #008888
+}
+
+------=_NextPart_000_0007_01C9095E.B694F140--
