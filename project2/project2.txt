@@ -1,1 +1,2 @@
-dsasdfdsf
+https://scikit-learn.org/stable/
+https://hub.gke.mybinder.org/user/jupyterlab-jupyterlab-demo-ev4d8qec/lab
